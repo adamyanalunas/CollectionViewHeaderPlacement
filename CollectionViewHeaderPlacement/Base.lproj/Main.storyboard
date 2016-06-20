@@ -1,25 +1,107 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5vi-wz-oP3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Collection View Controller-->
+        <scene sceneID="nEY-Fz-vq6">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <collectionViewController id="W0o-Jl-8ub" customClass="CollectionViewController" customModule="CollectionViewHeaderPlacement" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Hbm-re-plo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewLayout key="collectionViewLayout" id="kLO-BF-nE5" customClass="FlowLayout" customModule="CollectionViewHeaderPlacement" customModuleProvider="target"/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="6Bl-2U-fvR" customClass="Cell" customModule="CollectionViewHeaderPlacement">
+                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ttile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDT-3v-k4O">
+                                            <rect key="frame" x="8.5" y="14.5" width="33.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="JDT-3v-k4O" firstAttribute="centerY" secondItem="6Bl-2U-fvR" secondAttribute="centerY" id="Vco-4x-Xub"/>
+                                    <constraint firstItem="JDT-3v-k4O" firstAttribute="centerX" secondItem="6Bl-2U-fvR" secondAttribute="centerX" id="ygF-pE-VBz"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="title" destination="JDT-3v-k4O" id="8fi-5G-Bcg"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="W0o-Jl-8ub" id="sI4-kx-iAH"/>
+                            <outlet property="delegate" destination="W0o-Jl-8ub" id="nex-jD-Bd5"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="ZPI-N4-EP5">
+                        <barButtonItem key="leftBarButtonItem" title="Enable Slow Animations" id="NqD-tk-BmU">
+                            <connections>
+                                <action selector="handleSpeedButton:" destination="W0o-Jl-8ub" id="4xw-Zh-lGg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Enable Header Hack" id="yiu-1r-P1O">
+                            <connections>
+                                <action selector="handleHackButton:" destination="W0o-Jl-8ub" id="iRt-wD-5fk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="headerHackButton" destination="yiu-1r-P1O" id="EAy-qy-Csf"/>
+                        <outlet property="slowAnimationButton" destination="NqD-tk-BmU" id="mLo-s3-g3w"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U0O-4P-nXu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Header" id="WYb-NX-frX" customClass="Header" customModule="CollectionViewHeaderPlacement" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gc-Hw-oRX">
+                            <rect key="frame" x="8" y="14" width="58" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="5gc-Hw-oRX" firstAttribute="centerY" secondItem="WYb-NX-frX" secondAttribute="centerY" id="URr-wX-WBY"/>
+                        <constraint firstItem="5gc-Hw-oRX" firstAttribute="leading" secondItem="WYb-NX-frX" secondAttribute="leading" constant="8" id="eV9-0I-M91"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="title" destination="5gc-Hw-oRX" id="X3F-OB-5ga"/>
+                    </connections>
+                </collectionReusableView>
             </objects>
+            <point key="canvasLocation" x="1232" y="556"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bFa-lD-OcU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5vi-wz-oP3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aFD-fu-l9D">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="W0o-Jl-8ub" kind="relationship" relationship="rootViewController" id="J0q-Gr-ZMX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NiZ-yN-XgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="420" y="556"/>
         </scene>
     </scenes>
 </document>
